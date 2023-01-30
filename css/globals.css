@@ -1,0 +1,67 @@
+/* This is the overall and default styling and customizing for views and view components */
+
+*{
+    /* Overalls customizations */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;  
+    scroll-behavior: smooth;
+    text-decoration: none;
+}
+
+/* =================== FORM STYLING =================== */
+
+.admin-login-form {
+    padding: 10% 0 0 0;
+}
+.admin-login-form .input-fields {
+    cursor: pointer;
+    border-radius: 30px;
+    width: 300px;
+    height: 30px;
+    padding: 1em;
+    text-align: center;
+    backdrop-filter: blur(5px);
+    box-shadow: 4px 4px 0px rgba(0,0,0,0.2);
+}
+.admin-login-form input:hover {
+    background: rgba(255,255,255,0.1);
+    box-shadow: 0px 0px 5px 8px rgba(0,0,0,0.2);
+}
+.admin-login-form input:focus {
+    background: rgba(255,255,255,0.1);
+    box-shadow: 0px 0px 5px 8px rgba(0,0,0,0.2);
+}
+
+
+.resident-login-form {
+    padding: 10% 0 0 0;
+}
+.resident-login-form .input-fields {
+    cursor: pointer;
+    border-radius: 30px;
+    width: 300px;
+    height: 30px;
+    padding: 1em;
+    text-align: center;
+    backdrop-filter: blur(5px);
+    box-shadow: 4px 4px 0px rgba(0,0,0,0.2);
+}
+.resident-login-form input:hover {
+    background: rgba(255,255,255,0.1);
+    box-shadow: 0px 0px 5px 8px rgba(0,0,0,0.2);
+}
+.resident-login-form input:focus {
+    background: rgba(255,255,255,0.1);
+    box-shadow: 0px 0px 5px 8px rgba(0,0,0,0.2);
+}
+
+
+
+
+
+.welcome-prompt {
+    padding-top: 100px;
+}
+.welcome-prompt .logo img{
+    width: 500px;
+    height: auto;
+}

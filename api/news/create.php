@@ -1,0 +1,30 @@
+<?php
+require("../../database_instance.php");
+
+// Try to retrieve the form values
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Stop redirecting on an a
+    /**
+     * Form values in creating news
+     * - News header   name="news-header"
+     * - News category name="news-category"
+     * - News body     "news-body"
+     */
+    
+    $news_header = $_POST["news-header"];
+    $news_category = $_POST["news-category"];
+    $news_body = $_POST["news-body"];
+    $news_date = date("Y-m-d");
+    
+    // Create a query to save a news record
+    $query = "INSERT INTO NEWS (title, description, date_posted, category_name)
+        VALUES('$news_header', '$news_body', $news_date, '$news_category')";
+
+    if (mysqli_query($conn, $query)) {
+        // Upon making a query redirect to admin_home
+        header("location: ../../views/admin/admin_home.php");
+    }
+    $conn->close();
+}
+
+?>

@@ -1,0 +1,29 @@
+/* Add a black background color to the top navigation */
+.resident_navbar {
+    height: 50px;
+    background-color: rgb(27, 130, 219);
+    overflow: hidden;
+  }
+  
+  /* Style the links inside the navigation bar */
+  .resident_navbar a {
+    float: center;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    font-size: 30px;
+    text-decoration: none;
+    border-radius: 30px;
+  }
+  
+  /* Change the color of links on hover */
+  .resident_navbar a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  
+  /* Add a color to the active/current link */
+  .resident_navbar a.active {
+    background-color: rgb(13, 9, 138);
+    color: white;
+  }
