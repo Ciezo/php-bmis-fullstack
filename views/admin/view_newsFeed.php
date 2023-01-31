@@ -22,6 +22,21 @@ session_start();
         <!-- Bootstrap from https://getbootstrap.com/ -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style>
+            .wrapper{
+                width: 1000px;
+                margin: 0 auto;
+            }
+
+            table tr td {
+                width: fit-content;
+            }
+        </style>
+        <script>
+            $(document).ready(function(){
+                $('[data-toggle="tooltip"]').tooltip();   
+            });
+        </script>
     </head>
     <body>
         <!-- Top navbar at admin navbar ONLY -->
@@ -56,10 +71,10 @@ session_start();
                                         echo '</tr>';
                                         echo '<tr>';
                                             echo '<td>';
-                                                echo '<a href="../../api/news/update.php?id='. $row['news_id'] .'" class="mr-3" title="Update News" data-toggle="tooltip"><span class="fa fa-pencil"></span></a>';
+                                                echo '<a href="../../api/news/update.php?id='. $row['news_id'] .'" class="px-2" title="Update News" data-toggle="tooltip"><span class="fa fa-pencil"></span></a>';
+                                                echo '<a href="../../api/news/delete.php?id='. $row['news_id'] .'" class="px-2" title="Delete News" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
                                             echo '</td>';
                                             echo '<td>';
-                                                echo '<a href="../../api/news/delete.php?id='. $row['news_id'] .'" class="mr-3" title="Delete News" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
                                             echo '</td>';
                                         echo '</tr>'; 
                                 echo '</thead>';
