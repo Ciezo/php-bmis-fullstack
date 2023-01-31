@@ -28,6 +28,17 @@ session_start();
         <link href="../../css/resident_navbar.css" rel="stylesheet">
         <!-- Bootstrap from https://getbootstrap.com/ -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+        <style>
+            .wrapper{
+                width: 1000px;
+                margin: 0 auto;
+                padding-top: 100px;
+            }
+
+            table tr td {
+                width: fit-content;
+            }
+        </style>
     </head>
     <body>
         <!-- Top navbar at resident navbar ONLY -->
@@ -41,36 +52,29 @@ session_start();
         </div>
         
         <!-- Retrieve all news content from the database -->
+        <div class="wrapper">
         <?php
             // Create a query to fetch all news contents
             $query = "SELECT * FROM NEWS"; 
             $results = mysqli_query($conn, $query); 
-
+            
             // Begin fetching results as rows
             while ($row = mysqli_fetch_array($results)) {
-                echo '<center>';
-                    echo '<div class="news-section-repeating">';
-                        echo "<h2>" . $row['title'] . "</h2>";
-                        echo "<h4>News Category: " . $row['category_name'] . "</h4>";
-                        echo "<p>" . $row['date_posted'] . "</p>";
-                        echo '<p class="news-body-repeating">'. $row['description'] . '</p>' ;
-                    echo '</div>';
-                echo '</center>';
+                echo '<table class="table table-hover">';
+                echo '<thead>';
+                echo    '<tr class="table-primary"><th><h1>'. $row['title'] .'</h1></th></tr>'; 
+                echo '</thead>';
+                echo '<tbody>';
+                echo    '<td class="table-secondary">';
+                echo        '<p>'. $row['description'] .'</p>';
+                echo    '</td>';
+                echo    '<tr class="table-light"><td>News Category:<i><h6> '. $row['category_name'] .'</h6></i></td></tr>'; 
+                echo    '<tr class="table-light"><td>Date Posted: '. $row['date_posted'] .'</td></tr>'; 
+                echo '</tbody>';
+                echo '</table>';
+                echo '<br> <br>';
             }
             ?>
-
-
-
-        <center>
-        <div class="news-body-section-repeating">
-            <h1>news header</h1>
-            <h3>category</h3>
-            <div class="news-body">
-                <p>Message body</p>
-            </div>
         </div>
-        </center>
-        
-
     </body>
 </html>
