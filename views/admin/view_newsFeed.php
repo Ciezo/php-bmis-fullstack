@@ -64,6 +64,7 @@ session_start();
                     echo '<thead>';
                     echo    '<tr><th><h1>'. $row['title'] .'</h1></th></tr>'; 
                     echo    '<tr><th>News Category: '. $row['category_name'] .'</th></tr>'; 
+                    echo    '<tr class="table-light"><td>Date Posted: '. $row['date_posted'] .'</td></tr>'; 
                     echo    '<tr>';
                     echo        '<th>';
                     echo            '<a class="btn btn-primary pr-2" href="../../api/news/update.php?id='.$row['news_id'].'">Update</a>';

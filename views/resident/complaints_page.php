@@ -27,6 +27,13 @@ session_start();
         <link href="../../css/resident_navbar.css" rel="stylesheet">
         <!-- Bootstrap from https://getbootstrap.com/ -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+        <style>
+            .wrapper{
+                width: 1000px;
+                margin: 0 auto;
+                padding-top: 100px;
+            }
+        </style>
     </head>
     <body>
         <!-- Top navbar at resident navbar ONLY -->
@@ -37,6 +44,10 @@ session_start();
                 <a href="barangay_details.php">Barangay Details</a>
                 <a href="../../components/custom/logout.php">Logout</a>
             </center>
+        </div>
+
+        <div class="wrapper">
+
         </div>
 
         <div class="report-submission-group">

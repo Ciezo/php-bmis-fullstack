@@ -47,7 +47,7 @@ session_start();
 </html>
 
 <?php
-// error_reporting(0);
+error_reporting(0);
 if($_SERVER["REQUEST_METHOD"] == "POST") {
     require("../../database_instance.php");
     require("../../components/logic/AuthenticationService.php");
