@@ -57,22 +57,28 @@ session_start();
             // Create a query to fetch all news contents
             $query = "SELECT * FROM NEWS"; 
             $results = mysqli_query($conn, $query); 
-            
-            // Begin fetching results as rows
-            while ($row = mysqli_fetch_array($results)) {
-                echo '<table class="table table-hover">';
-                echo '<thead>';
-                echo    '<tr class="table-primary"><th><h1>'. $row['title'] .'</h1></th></tr>'; 
-                echo '</thead>';
-                echo '<tbody>';
-                echo    '<td class="table-secondary">';
-                echo        '<p>'. $row['description'] .'</p>';
-                echo    '</td>';
-                echo    '<tr class="table-light"><td>News Category:<i><h6> '. $row['category_name'] .'</h6></i></td></tr>'; 
-                echo    '<tr class="table-light"><td>Date Posted: '. $row['date_posted'] .'</td></tr>'; 
-                echo '</tbody>';
-                echo '</table>';
-                echo '<br> <br>';
+            // If there are results retrieved from the database, then
+            if ($results->num_rows >0) {
+                // Begin fetching results as rows
+                while ($row = mysqli_fetch_array($results)) {
+                    echo '<table class="table table-hover">';
+                    echo '<thead>';
+                    echo    '<tr class="table-primary"><th><h1>'. $row['title'] .'</h1></th></tr>'; 
+                    echo '</thead>';
+                    echo '<tbody>';
+                    echo    '<td class="table-secondary">';
+                    echo        '<p>'. $row['description'] .'</p>';
+                    echo    '</td>';
+                    echo    '<tr class="table-light"><td>News Category:<i><h6> '. $row['category_name'] .'</h6></i></td></tr>'; 
+                    echo    '<tr class="table-light"><td>Date Posted: '. $row['date_posted'] .'</td></tr>'; 
+                    echo '</tbody>';
+                    echo '</table>';
+                    echo '<br> <br>';
+                }
+            }
+
+            else {
+                echo '<div class="alert alert-warning"><em>Please, wait for news and announcements from the barangay administration.</em></div>';
             }
             ?>
         </div>

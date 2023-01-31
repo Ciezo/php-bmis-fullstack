@@ -26,6 +26,7 @@ session_start();
             .wrapper{
                 width: 750px;
                 margin: 0 auto;
+                padding-top: 100px;
             }
 
             table tr td {
@@ -55,27 +56,33 @@ session_start();
             // Create a query to fetch all news contents
             $query = "SELECT * FROM NEWS"; 
             $results = mysqli_query($conn, $query); 
-            
-            // Begin fetching results as rows
-            while ($row = mysqli_fetch_array($results)) {
-                echo '<table class="table table-hover">';
-                echo '<thead>';
-                echo    '<tr><th><h1>'. $row['title'] .'</h1></th></tr>'; 
-                echo    '<tr><th>News Category: '. $row['category_name'] .'</th></tr>'; 
-                echo    '<tr>';
-                echo        '<th>';
-                echo            '<a class="btn btn-primary pr-2" href="../../api/news/update.php?id='.$row['news_id'].'">Update</a>';
-                echo            '<a class="btn btn-danger pr-2" href="../../api/news/delete.php?id='. $row['news_id'].'">Delete</a>';
-                echo        '</th>';
-                echo    '</tr>'; 
-                echo '</thead>';
-                echo '<tbody>';
-                echo    '<td class="table-primary">';
-                echo        '<p>'. $row['description'] .'</p>';
-                echo    '</td>';
-                echo '</tbody>';
-                echo '</table>';
-                echo '<br> <br>';
+            // If there there are contents in the results, then, 
+            if ($results->num_rows > 0) {
+                // Begin fetching results as rows
+                while ($row = mysqli_fetch_array($results)) {
+                    echo '<table class="table table-hover">';
+                    echo '<thead>';
+                    echo    '<tr><th><h1>'. $row['title'] .'</h1></th></tr>'; 
+                    echo    '<tr><th>News Category: '. $row['category_name'] .'</th></tr>'; 
+                    echo    '<tr>';
+                    echo        '<th>';
+                    echo            '<a class="btn btn-primary pr-2" href="../../api/news/update.php?id='.$row['news_id'].'">Update</a>';
+                    echo            '<a class="btn btn-danger pr-2" href="../../api/news/delete.php?id='. $row['news_id'].'">Delete</a>';
+                    echo        '</th>';
+                    echo    '</tr>'; 
+                    echo '</thead>';
+                    echo '<tbody>';
+                    echo    '<td class="table-primary">';
+                    echo        '<p>'. $row['description'] .'</p>';
+                    echo    '</td>';
+                    echo '</tbody>';
+                    echo '</table>';
+                    echo '<br> <br>';
+                }
+            }
+
+            else {
+                echo '<div class="alert alert-danger"><em>No news has been posted yet!</em></div>';
             }
             ?>
         </div>
