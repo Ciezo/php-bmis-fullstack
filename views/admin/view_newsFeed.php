@@ -21,6 +21,7 @@ session_start();
         <link href="../../css/admin_navbar.css" rel="stylesheet">
         <!-- Bootstrap from https://getbootstrap.com/ -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
     <body>
         <!-- Top navbar at admin navbar ONLY -->
@@ -42,21 +43,24 @@ session_start();
                         // Create a query to fetch all news contents
                         $query = "SELECT * FROM NEWS"; 
                         $results = mysqli_query($conn, $query); 
-
+                        include("../../api/news/update.php");
                         // Begin fetching results as rows
                         while ($row = mysqli_fetch_array($results)) {
                             echo '<table class="table table-striped>"';
                                 echo '<thead>';
                                         echo '<tr>';
-                                            echo '<th scope="col">'.'<h2>'.$row['title']  .'</h2>'. '</th>';
+                                            echo '<th>'.'<h2>'.$row['title']  .'</h2>'. '</th>';
                                         echo '</tr>'; 
                                         echo '<tr>';
                                             echo '<td><h4>Category: '. $row['category_name'] . '</h4></td>';
                                         echo '</tr>';
                                         echo '<tr>';
-                                            echo '<td>News ID: '.'<p>'. $row['news_id'] .'</p>'. '</td>';
-                                            echo '<td><button>Update</button> </td>';
-                                            echo '<td><button>Delete</button> </td>';
+                                            echo '<td>';
+                                                echo '<a href="../../api/news/update.php?id='. $row['news_id'] .'" class="mr-3" title="Update News" data-toggle="tooltip"><span class="fa fa-pencil"></span></a>';
+                                            echo '</td>';
+                                            echo '<td>';
+                                                echo '<a href="../../api/news/delete.php?id='. $row['news_id'] .'" class="mr-3" title="Delete News" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
+                                            echo '</td>';
                                         echo '</tr>'; 
                                 echo '</thead>';
 
