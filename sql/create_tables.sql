@@ -28,9 +28,9 @@ CREATE TABLE IF NOT EXISTS CATEGORY (
 
 CREATE TABLE IF NOT EXISTS NEWS (
     news_id         INT             NOT NULL auto_increment,
-    title           VARCHAR(50)     NOT NULL, 
-    description     VARCHAR(32765)    NOT NULL,
-    date_posted     DATE            NOT NULL,
+    title           VARCHAR(255)    NOT NULL, 
+    description     VARCHAR(32765)  NOT NULL,
+    date_posted     VARCHAR(100)    NOT NULL,
     -- category_id     INT             NOT NULL, 
     category_name   VARCHAR(100)    NOT NULL, 
 
@@ -42,8 +42,10 @@ CREATE TABLE IF NOT EXISTS NEWS (
 
 CREATE TABLE IF NOT EXISTS REPORTS (
     report_id       INT             NOT NULL auto_increment,
-    title           VARCHAR(50)     NOT NULL,
-    description     VARCHAR(32765)    NOT NULL,
+    title           VARCHAR(255)    NOT NULL,
+    report_category VARCHAR(100)    NOT NULL, 
+    description     VARCHAR(32765)  NOT NULL,
+    date_posted     VARCHAR(100)    NOT NULL,
     status          VARCHAR(100)    NOT NULL,
 
     PRIMARY KEY (report_id)
