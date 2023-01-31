@@ -24,7 +24,7 @@ session_start();
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <style>
             .wrapper{
-                width: 1000px;
+                width: 750px;
                 margin: 0 auto;
             }
 
@@ -51,48 +51,33 @@ session_start();
         </div>
 
         <div class="wrapper">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-12">
-                        <?php
-                        // Create a query to fetch all news contents
-                        $query = "SELECT * FROM NEWS"; 
-                        $results = mysqli_query($conn, $query); 
-                        include("../../api/news/update.php");
-                        // Begin fetching results as rows
-                        while ($row = mysqli_fetch_array($results)) {
-                            echo '<table class="table table-striped>"';
-                                echo '<thead>';
-                                        echo '<tr>';
-                                            echo '<th>'.'<h2>'.$row['title']  .'</h2>'. '</th>';
-                                        echo '</tr>'; 
-                                        echo '<tr>';
-                                            echo '<td><h4>Category: '. $row['category_name'] . '</h4></td>';
-                                        echo '</tr>';
-                                        echo '<tr>';
-                                            echo '<td>';
-                                                echo '<a href="../../api/news/update.php?id='. $row['news_id'] .'" class="px-2" title="Update News" data-toggle="tooltip"><span class="fa fa-pencil"></span></a>';
-                                                echo '<a href="../../api/news/delete.php?id='. $row['news_id'] .'" class="px-2" title="Delete News" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
-                                            echo '</td>';
-                                            echo '<td>';
-                                            echo '</td>';
-                                        echo '</tr>'; 
-                                echo '</thead>';
-
-                                echo '<tbody>';
-                                    echo '<tr>';
-                                        echo '<td><p>Date Posted: '. $row['date_posted'] . '</p></td>';
-                                    echo '</tr>';
-                                    echo '<tr>';
-                                        echo '<td><p>'. $row['description'] . '</p></td>';
-                                    echo '</tr>';                        
-                                echo '</tbody>';
-                            echo '</table>';
-                        }
-                        ?>
-                    </div>
-                </div>
-            </div>
+            <?php
+            // Create a query to fetch all news contents
+            $query = "SELECT * FROM NEWS"; 
+            $results = mysqli_query($conn, $query); 
+            
+            // Begin fetching results as rows
+            while ($row = mysqli_fetch_array($results)) {
+                echo '<table class="table table-hover">';
+                echo '<thead>';
+                echo    '<tr><th><h1>'. $row['title'] .'</h1></th></tr>'; 
+                echo    '<tr><th>News Category: '. $row['category_name'] .'</th></tr>'; 
+                echo    '<tr>';
+                echo        '<th>';
+                echo            '<a class="btn btn-primary pr-2" href="../../api/news/update.php?id='.$row['news_id'].'">Update</a>';
+                echo            '<a class="btn btn-danger pr-2" href="../../api/news/delete.php?id='. $row['news_id'].'">Delete</a>';
+                echo        '</th>';
+                echo    '</tr>'; 
+                echo '</thead>';
+                echo '<tbody>';
+                echo    '<td class="table-primary">';
+                echo        '<p>'. $row['description'] .'</p>';
+                echo    '</td>';
+                echo '</tbody>';
+                echo '</table>';
+                echo '<br> <br>';
+            }
+            ?>
         </div>
     </body>
 </html>
