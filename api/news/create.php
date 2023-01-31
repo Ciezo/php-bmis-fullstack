@@ -14,11 +14,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $news_header = $_POST["news-header"];
     $news_category = $_POST["news-category"];
     $news_body = $_POST["news-body"];
-    $news_date = date("Y-m-d");
+
+    /** 
+     * @todo set the default time zone first 
+     */
+    date_default_timezone_set('Asia/Manila');
+    $news_date = date("d/m/Y");
     
     // Create a query to save a news record
     $query = "INSERT INTO NEWS (title, description, date_posted, category_name)
-        VALUES('$news_header', '$news_body', $news_date, '$news_category')";
+        VALUES('$news_header', '$news_body', '$news_date', '$news_category')";
 
     if (mysqli_query($conn, $query)) {
         // Upon making a query redirect to admin_home
