@@ -34,22 +34,46 @@ session_start();
             </center>
         </div>
 
-            <?php
-            // Create a query to fetch all news contents
-            $query = "SELECT * FROM NEWS"; 
-            $results = mysqli_query($conn, $query); 
+        <div class="wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <?php
+                        // Create a query to fetch all news contents
+                        $query = "SELECT * FROM NEWS"; 
+                        $results = mysqli_query($conn, $query); 
 
-            // Begin fetching results as rows
-            while ($row = mysqli_fetch_array($results)) {
-                echo '<center>';
-                    echo '<div class="news-section-repeating">';
-                        echo "<h2>" . $row['title'] . "</h2>";
-                        echo "<h4>News Category: " . $row['category_name'] . "</h4>";
-                        echo "<p>" . $row['date_posted'] . "</p>";
-                        echo '<p class="news-body-repeating">'. $row['description'] . '</p>' ;
-                    echo '</div>';
-                echo '</center>';
-            }
-            ?>
+                        // Begin fetching results as rows
+                        while ($row = mysqli_fetch_array($results)) {
+                            echo '<table class="table table-striped>"';
+                                echo '<thead>';
+                                        echo '<tr>';
+                                            echo '<th scope="col">'.'<h2>'.$row['title']  .'</h2>'. '</th>';
+                                        echo '</tr>'; 
+                                        echo '<tr>';
+                                            echo '<td><h4>Category: '. $row['category_name'] . '</h4></td>';
+                                        echo '</tr>';
+                                        echo '<tr>';
+                                            echo '<td>News ID: '.'<p>'. $row['news_id'] .'</p>'. '</td>';
+                                            echo '<td><button>Update</button> </td>';
+                                            echo '<td><button>Delete</button> </td>';
+                                        echo '</tr>'; 
+                                echo '</thead>';
+
+                                echo '<tbody>';
+                                    echo '<tr>';
+                                        echo '<td><p>Date Posted: '. $row['date_posted'] . '</p></td>';
+                                    echo '</tr>';
+                                    echo '<tr>';
+                                        echo '<td><p>'. $row['description'] . '</p></td>';
+                                    echo '</tr>';                        
+                                echo '</tbody>';
+                            echo '</table>';
+                        }
+                        ?>
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
