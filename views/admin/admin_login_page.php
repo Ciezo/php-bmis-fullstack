@@ -39,7 +39,7 @@ session_start();
             <form class="admin-login-form" action="admin_login_page.php" method="POST">
                 <h1>Admin, Login</h1>
                 <input class="input-fields" type="text" name="username" placeholder="Username" required=""> <br><br>
-                <input class="input-fields"type="text" name="password" placeholder="Password" required=""> <br> <br>
+                <input class="input-fields"type="password" name="password" placeholder="Password" required=""> <br> <br>
                 <input class="submit-form-btn" name="login" type="submit" value="LOGIN"><br>
             </form>
         </center>

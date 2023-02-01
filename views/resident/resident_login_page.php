@@ -39,7 +39,7 @@ session_start();
             <form action="resident_login_page.php" class="resident-login-form" method="POST">
                 <h1>Resident, Login</h1>
                 <input class="input-fields" type="text" name="username" placeholder="Username" required=""> <br><br>
-                <input class="input-fields"type="text" name="password" placeholder="Password" required=""> <br><br>
+                <input class="input-fields"type="password" name="password" placeholder="Password" required=""> <br><br>
                 <input class="submit-form-btn" name="login" type="submit" value="LOGIN"><br><br>
                 <h4>No Account? 
                     <a href="register_resident.php">Register</a>
