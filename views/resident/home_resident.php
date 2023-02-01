@@ -41,7 +41,7 @@ session_start();
 			}
 
 			.table-primary h1{
-				color: #fff;
+				color: black; 
 			}
 
 			.table-secondary p{
