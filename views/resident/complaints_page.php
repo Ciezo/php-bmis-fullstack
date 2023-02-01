@@ -97,6 +97,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 margin: 0 auto;
                 padding-top: 100px;
             }
+
+            table tr td {
+                width: 500px;
+            }
         </style>
     </head>
     <body>
@@ -170,6 +174,47 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     }
                 ?>
             </form>
+
+            <br><br>
+            <h1>My Reports</h1>
+            <!-- Create a table to fetch REPORTS table -->
+            <?php
+                // Create a query to fetch all contents from report tables
+                $query = "SELECT * FROM REPORTS"; 
+                $results = mysqli_query($conn, $query);
+
+                if ($results->num_rows > 0) {
+                    // Begin fetching results as rows
+                    while ($row = mysqli_fetch_array($results)) {
+                        echo '<table class="table table-striped">';
+                        echo '<thead class="thead-dark">';
+                        echo    '<tr class="table-dark">';
+                        echo        '<th scope="col">Report ID</th>';
+                        echo        '<th scope="col">Subject</th>';
+                        echo        '<th scope="col">Date Posted</th>';
+                        echo        '<th scope="col">Actions</th>';
+                        echo    '</tr>';
+                        echo '</thead>';
+                        echo '<tbody>';
+                        echo    '<td>'. $row['report_id'] .'</td>';
+                        echo    '<td>'. $row['title'] .'</td>';
+                        echo    '<td>'. $row['date_posted'] .'</td>';
+                        echo    '<td>';
+                        echo       '<a class="btn btn-primary" href="../../api/reports/read.php?id='.$row['report_id'].'">View</a>';
+                        echo       '<a class="btn btn-success" href="../../api/reports/update.php?id='.$row['report_id'].'">Update</a>';
+                        echo       '<a class="btn btn-danger" href="../../api/reports/delete.php?id='.$row['report_id'].'">Delete</a>';
+                        echo    '</td>';
+                        echo '</tbody>';
+                        echo '</table>';
+                        echo '<br> <br>';
+                    }
+                }
+
+                else {
+                    echo '<div class="alert alert-danger"><em>You have not submitted any reports yet</em></div>';
+                }
+
+            ?>
         </div>
     </body>
 </html>
