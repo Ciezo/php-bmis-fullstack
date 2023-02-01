@@ -58,6 +58,7 @@ session_start();
 
   .submit-form-btn:hover {
     background-color: #45a049;
+    color: black;
   }
 
   h4 a {
