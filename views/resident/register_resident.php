@@ -21,6 +21,54 @@ session_start();
         <link href="../../css/index_navbar.css" rel="stylesheet">
         <!-- Bootstrap from https://getbootstrap.com/ -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+<style>
+    /* Add styles for the form */
+    .resident-login-form {
+        width: 400px;
+        padding: 40px;
+        border: 1px solid gray;
+        border-radius: 10px;
+        margin-top: 100px;
+        background-color: lightgray;
+    }
+
+    /* Add styles for the form input fields */
+    .resident-login-form input[type="text"],
+    .resident-login-form input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid black;
+        border-radius: 5px;
+    }
+
+    /* Add styles for the form submit button */
+    .resident-login-form input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        background-color: darkblue;
+        color: white;
+        cursor: pointer;
+        border: none;
+    }
+
+    /* Add styles for the form heading */
+    .resident-login-form h1 {
+        margin-bottom: 30px;
+        color: black;
+    }
+
+    /* Add styles for the form link */
+    .resident-login-form a {
+        color: blue;
+        font-size: 12px;
+        margin-top: 20px;
+        display: block;
+    }
+</style>
+
 </head>
 <body>
     <!-- Top navbar at index ONLY -->
