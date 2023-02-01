@@ -87,21 +87,59 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Global styling and theming -->
         <link href="../../css/globals.css" rel="stylesheet">
+		<!-- Styling to resident complaints only -->
+        <link href="../../css/complaints_resident.css" rel="stylesheet">
         <!-- Styling to resident navbar only -->
         <link href="../../css/resident_navbar.css" rel="stylesheet">
         <!-- Bootstrap from https://getbootstrap.com/ -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
         <style>
-            .wrapper{
-                width: 1000px;
-                margin: 0 auto;
-                padding-top: 100px;
-            }
+    .wrapper{
+        width: 1000px;
+        margin: 0 auto;
+        padding-top: 100px;
+    }
 
-            table tr td {
-                width: 500px;
-            }
-        </style>
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+
+    label {
+        font-weight: bold;
+    }
+
+    input, select {
+        width: 100%;
+        padding: .5rem;
+        font-size: 1rem;
+        border-radius: .25rem;
+        border: 1px solid #ced4da;
+    }
+
+    .textarea-field {
+        height: 150px;
+        padding: .5rem;
+        font-size: 1rem;
+        border-radius: .25rem;
+        border: 1px solid #ced4da;
+        resize: none;
+    }
+
+    .error {
+        color: #dc3545;
+    }
+
+    button {
+        background-color: #007bff;
+        color: #fff;
+        padding: .5rem 1rem;
+        border-radius: .25rem;
+        border: none;
+        cursor: pointer;
+        font-size: 1rem;
+        margin-top: 1rem;
+    }
+</style>
     </head>
     <body>
         <!-- Top navbar at resident navbar ONLY -->

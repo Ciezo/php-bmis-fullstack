@@ -1,0 +1,38 @@
+.wrapper {
+  width: 80%;
+  margin: 0 auto;
+  padding-top: 3%;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+label {
+  font-weight: bold;
+}
+
+input[type="text"], textarea {
+  padding: 0.75rem;
+  font-size: 1rem;
+  border-radius: 0.25rem;
+  border: 1px solid #ccc;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+input[type="submit"] {
+  padding: 1rem 2rem;
+  background-color: #28a745;
+  color: #fff;
+  border-radius: 0.25rem;
+  border: 1px solid #28a745;
+  cursor: pointer;
+  float: right;
+}
+
+.error {
+  color: red;
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+}
