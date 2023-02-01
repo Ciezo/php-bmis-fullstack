@@ -24,7 +24,49 @@ session_start();
         <link href="../../css/index_navbar.css" rel="stylesheet">
         <!-- Bootstrap from https://getbootstrap.com/ -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    </head>
+    
+	<style>
+  .resident-login-form {
+    width: 30%;
+    padding: 30px;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-top: 50px;
+  }
+
+  .input-fields {
+    width: 100%;
+    padding: 12px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+  }
+
+  .submit-form-btn {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    margin-top: 10px;
+  }
+
+  .submit-form-btn:hover {
+    background-color: #45a049;
+  }
+
+  h4 a {
+    color: #4CAF50;
+  }
+</style>
+
+	
+	</head>
     <body>
         <!-- Top navbar at index ONLY -->
         <div class="index_navbar">
