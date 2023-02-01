@@ -77,6 +77,7 @@ require("../../database_instance.php");
                         echo '<div class="review-box-repeating">';
                         echo    '<h1>' . $rows["title"] . '</h1>';             // Report header
                         echo    '<h5>' . $rows["report_category"] .'</h5>';             // Report category
+                        echo    '<h6>Status: ' . $rows["status"] .'</h6>';             // Report status
                         echo    '<div class="report-body">';    // Report body
                         echo        '<p>' . $rows["description"] . '</p>';
                         echo    '</div>';
@@ -86,12 +87,9 @@ require("../../database_instance.php");
                         echo        '<p>Date Posted: '. $rows["date_posted"] . '</p>';
                         echo     '</div>';
                         echo    '<div class="report-admin-actions">';
-                        echo        '<button type="submit" class="btn btn-primary mr-2">Mark as <i>In Progress</i>';
-                        echo        '</button>';
-
-
-                        echo        '<button class="btn btn-success mr-2">Mark as <i>Resolved</i></button>';
-                        echo        '<button class="btn btn-danger mr-2">Delete this report?</i></button>';
+                        echo       '<a class="btn btn-primary" href="../../api/reports/edit_status__inProgress.php?id='.$rows['report_id'].'">Mark as <i>In Progress</i></a>';
+                        echo       '<a class="btn btn-success" href="../../api/reports/edit_status__Resolved.php?id='.$rows['report_id'].'">Mark as <i>Resolved</i></a>';
+                        echo       '<a class="btn btn-danger" href="../../api/reports/admin_delete_report.php?id='.$rows['report_id'].'">Delete this report?</a>';
                         echo    '</div>';
                         echo '</div>';
                         echo '<br><br><br>';
