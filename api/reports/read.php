@@ -75,25 +75,46 @@ else {
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <style>
-            .wrapper{
-                width: 600px;
-                margin: 0 auto;
-                padding-top: 100px;
-            }
-            .form-group{
-                margin: 0 20px 20px 0;
-            }
-            .form-group p {
-                margin: 0 20px 0 20px;
-                padding-left: 30px;
-                border-radius: 20px;
-                background-color: #edece8;
-            }
-            .report-footer {
-                padding-left: 10px;
-                border-radius: 10px;
-            }
-        </style>
+			.wrapper {
+				width: 600px;
+				margin: 0 auto;
+				padding-top: 100px;
+			}
+			.form-group {
+				margin: 0 20px 20px 0;
+			}
+			.form-group p {
+				margin: 0 20px 0 20px;
+				padding-left: 30px;
+				border-radius: 20px;
+				background-color: #edece8;
+				display: inline-block;
+				padding: 10px;
+				font-size: 16px;
+			}
+			.report-footer {
+				padding-left: 10px;
+				border-radius: 10px;
+				margin: 20px 0;
+				background-color: #edece8;
+				padding: 10px;
+			}
+			.report-footer p {
+				margin: 0;
+				font-size: 16px;
+			}
+			h2 {
+				margin-bottom: 20px;
+				font-size: 32px;
+				font-weight: bold;
+			}
+			h6 {
+				margin-bottom: 20px;
+				color: #777777;
+				font-size: 16px;
+			}
+		</style>
+
     </head>
     <body>
         <div class="wrapper">
@@ -105,16 +126,16 @@ else {
                     <p><b><?php echo $report_category; ?></b></p>
                 </div>
                 <div class="form-group">
-                    <label>Description</label>
+                    <label>Description:</label>
                     <p><b><?php echo $report_body; ?></b></p>
                 </div>
                 <div class="form-group">
-                    <label>Report Status</label>
+                    <label>Report Status:</label>
                     <p><b><?php echo $report_status; ?></b></p>
                 </div>
                 <div class="report-footer">
                     <label><b>Report issued by: <i><?php echo $report_name; ?></i></b></label> <br>
-                    <label><b>Contact No.: <i><?php echo $report_contact; ?></i></b></label>
+                    <label><b>Contact Number: <i><?php echo $report_contact; ?></i></b></label>
                 </div>
                 <br>
                 <p><a href="../../views/resident/complaints_page.php" class="btn btn-primary">Back</a></p>
