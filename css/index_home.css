@@ -1,0 +1,89 @@
+*{
+  box-sizing: border-box;
+}
+.bg-custom{
+ background: #efefef;
+  //background:#777;
+}
+/**************************/
+#header{
+  margin:15px 5px;
+  font-family: 'Handlee', cursive;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  height:280px;
+  background-image: url("../assets/logo/ldg_logo.jpg");
+  
+  background-size: cover;
+  text-align:center;
+  border-radius:15px;
+}
+#img-caption{
+    font-size: 25pt;
+    color: #3b464c;
+    padding-top: 0px;
+}
+#img-div{
+  width:98%;
+  max-width: 100%;
+  display: block;
+  height:auto;
+  margin:auto;
+  //background:white;
+}
+#image img{
+  max-width:100%;
+  /*this is the only way to make image responsive inside the flexbox*/
+  margin:auto;
+  display: block;
+  border:6px solid #fff;
+  border-radius:50%;
+  
+}
+#image{
+  /*responsive*/
+  max-width: 99%;
+  height: auto;
+      /* */ 
+  /*centerized*/
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+       /* */
+  
+}
+/********************************/
+#mantra{
+  font-family: 'Handlee', cursive;
+  border-radius:15px;
+}
+#mantra h2, #my-media h2, #contact h2,{
+  display:inline-block;
+  text-align:center;
+  border:5px dashed #20bcd5;
+  padding:20px 15px;
+  color:#20bcd5;
+  margin:auto 10px;
+}
+#mantra .content{
+  font-size:25px;
+}
+#mantra .right{
+  font-size:25px;
+}
+/*********************************/
+#my-media , #contact{
+  margin:15px 5px;
+  font-family: 'Handlee', cursive;
+  border-radius:15px;
+  
+}
+
+/********************************/
+#my-media iframe{
+  border:5px solid #3fb6b2;
+}
+
+/***************************/
