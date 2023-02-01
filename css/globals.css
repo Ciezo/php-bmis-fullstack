@@ -59,6 +59,7 @@
 
 
 .welcome-prompt {
+    margin: 0 auto;
     padding-top: 100px;
 }
 .welcome-prompt .logo img{

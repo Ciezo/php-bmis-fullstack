@@ -2,8 +2,8 @@
   box-sizing: border-box;
 }
 .bg-custom{
- background: #efefef;
-  //background:#777;
+ background: white;
+  /* background:#777; */
 }
 /**************************/
 #header{
@@ -31,7 +31,7 @@
   display: block;
   height:auto;
   margin:auto;
-  //background:white;
+  /* background:white; */
 }
 #image img{
   max-width:100%;
@@ -59,12 +59,13 @@
   font-family: 'Handlee', cursive;
   border-radius:15px;
 }
-#mantra h2, #my-media h2, #contact h2,{
+#mantra h2, #my-media h2, #contact h2{
   display:inline-block;
   text-align:center;
-  border:5px dashed #20bcd5;
+  /* border:5px dashed #20bcd5; */
   padding:20px 15px;
-  color:#20bcd5;
+  color: black;
+  font-weight: bold;
   margin:auto 10px;
 }
 #mantra .content{
