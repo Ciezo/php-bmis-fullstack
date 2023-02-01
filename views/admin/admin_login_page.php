@@ -24,7 +24,42 @@ session_start();
         <link href="../../css/index_navbar.css" rel="stylesheet">
         <!-- Bootstrap from https://getbootstrap.com/ -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    </head>
+    
+	 <!-- Styling for admin login page -->
+        <style>
+            .admin-login-form {
+                margin: 100px auto;
+                padding: 50px;
+                width: 400px;
+                background-color: #f2f2f2;
+                border-radius: 10px;
+                box-shadow: 0px 0px 10px 0px #333;
+            }
+            .input-fields {
+                width: 100%;
+                padding: 12px 20px;
+                margin: 8px 0;
+                box-sizing: border-box;
+                border-radius: 4px;
+                border: 1px solid #ccc;
+                font-size: 16px;
+            }
+            .submit-form-btn {
+                width: 100%;
+                background-color: #4CAF50;
+                color: white;
+                padding: 14px 20px;
+                margin: 8px 0;
+                border-radius: 4px;
+                cursor: pointer;
+                font-size: 16px;
+            }
+            .submit-form-btn:hover {
+                background-color: #45a049;
+            }
+        </style>
+	
+	</head>
     <body>
         <!-- Top navbar at index ONLY -->
         <div class="index_navbar">
@@ -39,7 +74,7 @@ session_start();
             <form class="admin-login-form" action="admin_login_page.php" method="POST">
                 <h1>Admin, Login</h1>
                 <input class="input-fields" type="text" name="username" placeholder="Username" required=""> <br><br>
-                <input class="input-fields"type="password" name="password" placeholder="Password" required=""> <br> <br>
+                <input class="input-fields"type="text" name="password" placeholder="Password" required=""> <br> <br>
                 <input class="submit-form-btn" name="login" type="submit" value="LOGIN"><br>
             </form>
         </center>
