@@ -34,11 +34,32 @@ session_start();
                 margin: 0 auto;
                 padding-top: 100px;
             }
+			table tr td {
+            width: fit-content;
+            padding: 20px;
+            text-align: left;
+			}
 
-            table tr td {
-                width: fit-content;
-            }
-        </style>
+			.table-primary h1{
+				color: #fff;
+			}
+
+			.table-secondary p{
+				color: #333;
+				font-size: 16px;
+				text-align: justify;
+			}
+
+			.table-light h6{
+				font-style: italic;
+				color: #333;
+			}
+
+			.table-light td{
+				color: #333;
+				font-size: 14px;
+			}
+		</style>
     </head>
     <body>
         <!-- Top navbar at resident navbar ONLY -->
