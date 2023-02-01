@@ -85,18 +85,30 @@ else {
 			}
 			.form-group p {
 				margin: 0 20px 0 20px;
-				padding-left: 30px;
-				border-radius: 20px;
-				background-color: #edece8;
-				display: inline-block;
-				padding: 10px;
+				/* padding-left: 30px; */
+				/* border-radius: 20px; */
+				/* display: inline-block; */
+				/* padding: 10px; */
 				font-size: 16px;
 			}
+            .form-group .form-report-category, 
+            .form-group .form-report-stat {
+                display: inline-block;
+            }
+            
+            .form-group .report-body {
+                border-radius: 10px;
+            }
+            .form-group .report-body p {
+                margin: 0 20px 0 20px;
+                padding-left: 30px;
+                background-color: #edece8;
+            }
 			.report-footer {
 				padding-left: 10px;
 				border-radius: 10px;
 				margin: 20px 0;
-				background-color: #edece8;
+				/* background-color: #edece8; */
 				padding: 10px;
 			}
 			.report-footer p {
@@ -121,19 +133,22 @@ else {
             <div class="container">
                 <h2><?php echo $report_title ?></h2>
                 <h6><?php echo $report_date_posted ?></h6>
-                <div class="form-group ">
+                <div class="form-group">
                     <label>Report Category:</label>
-                    <p><b><?php echo $report_category; ?></b></p>
+                    <p class="form-report-category"><b><?php echo $report_category; ?></b></p>
                 </div>
                 <div class="form-group">
-                    <label>Description:</label>
-                    <p><b><?php echo $report_body; ?></b></p>
+                    <div class="report-body">
+                        <label>Description:</label>
+                        <p><b><?php echo $report_body; ?></b></p>    
+                    </div>
                 </div>
                 <div class="form-group">
                     <label>Report Status:</label>
-                    <p><b><?php echo $report_status; ?></b></p>
+                    <p class="form-report-stat"><b><?php echo $report_status; ?></b></p>
                 </div>
                 <div class="report-footer">
+                    <hr>
                     <label><b>Report issued by: <i><?php echo $report_name; ?></i></b></label> <br>
                     <label><b>Contact Number: <i><?php echo $report_contact; ?></i></b></label>
                 </div>
