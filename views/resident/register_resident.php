@@ -84,9 +84,9 @@ session_start();
         <form action="register_resident.php" class="resident-login-form" method="POST">
             <h1>Sign up</h1>
             <input type="text" name="full_name" placeholder="Full Name" required=""> <br> <br>
-            <input type="text" name="contactNo" placeholder="Contact Number" required=""> <br> <br>
+            <input type="text" name="contactNo" placeholder="Mobile Number: 09XXXXXXXXX" required=""> <br> <br>
             <input type="text" name="username" placeholder="Username" required=""> <br> <br>  
-            <input type="text" name="password" placeholder="Password" required=""> <br> <br>
+            <input type="password" name="password" placeholder="Password" required=""> <br> <br>
             <input class="submit-form-btn" name="register" type="submit" value="REGISTER" required=""> <br> <br>
 
             <h4>Already have an account?</h4>
@@ -100,67 +100,88 @@ session_start();
 <?php
 if(isset($_POST["register"])) {
     // Prepare variable parameters
-    $full_name = ($_POST['full_name']);
-    $contactNo = ($_POST['contactNo']);
-    $username = ($_POST['username']);
-    $password = ($_POST['password']);
+    $full_name = trim(($_POST['full_name']));
+    $contactNo = trim(($_POST['contactNo']));
+    $username = trim($_POST['username']);
+    $password = trim($_POST['password']);
 
-    // Include our Resident model
-    include("../../model/Resident.php");
+    // Error variables
+    /** These two are used for validating contact number and usernames 
+     * @note Contact number WILL BE USED TO VALIDATE A RESIDENT. 
+     *      THIS IS TO AVOID HAVING MANY RESIDENTS USING THE SAME PHONE NUMBER
+     *      THEREFORE, ENSURE TO NOTIFY THE USER IF A PHONE NUMBER IS TAKEN.
+    */
+    $full_name_err = $contactNo_err = $username_err = "";
+    $isTaken_contactNum = false; 
+    $isTaken_username = false; 
 
-    // Input validation 
-    $contactNo = (int) $contactNo/100;          // remove prefix 0
-    if (empty($full_name) || empty($contactNo) || empty($username) || empty($password)) {
-        Print '<script>alert("Fill out the following forms");</script>'; 
+    // Validate full name 
+    if (!filter_var($full_name, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z\s]+$/")))) {
+        Print '<script>alert("Please, enter a valid name");</script>'; 
+        $full_name_err = 1;
     }
+
+    // Validate contact number
+    elseif (!is_numeric($contactNo)) {
+        Print '<script>alert("Please, enter a valid number!");</script>'; 
+        $contactNo_err = 1;
+    }
+
+    elseif ($contactNo >= 99999999999) {
+        Print '<script>alert("Please, enter a valid number!");</script>'; 
+        $contactNo_err = 2;
+    }
+
+    elseif ($contactNo == 0 || $contactNo < 0) {
+        Print '<script>alert("Please, enter a valid number!");</script>'; 
+        $contactNo_err = 3;
+    }
+
+    // Validate if the contact number is taken
+    elseif (isset($contactNo) || !empty($contactNo)) {
+        // Validate if contact number is taken
+        /**@todo Create a query and select contact_num */
+        $query = "SELECT * FROM USERS"; 
+        $results = mysqli_query($conn, $query); 
+
+        // Fetch the results as rows
+        while ($rows = mysqli_fetch_array($results)) {
+            // A cursor points to each row 
+            $cursor = $rows;         
+            // fetch all existing contact_num
+            $temp_contactNo = $cursor['contact_num'];   
+
+            if (strcmp($temp_contactNo, $contactNo) == 0) {
+                Print '<script>alert("Contact Number is already taken!");</script>';
+                $contactNo_err = 4;
+            }
+        }
+        $isTaken_contactNum = true;
+    }
+
+    // If there are no errors detected. Then, 
+    if (empty($full_name_err) && empty($contactNo_err) && empty($username_err)) {
+        // Load up the Resident Model template
+        include("../../model/Resident.php");
     
-    // Validate whether the credentials are already taken
-    $query = "SELECT * FROM USERS"; 
-    $results = mysqli_query($conn, $query); 
+        // If all credentials are valid. Create a resident object
+        $resident = new Resident($username, $password, $full_name, $contactNo); 
+        // Create parameters for SQL 
+        $param_userName = $resident->getUserName();
+        $param_password = $resident->getPassword();
+        $param_full_name = $resident->getFullName();
+        $param_contactNum = $resident->getContactNum();
 
-    // Scan the fetch results as rows
-    while ($row = mysqli_fetch_array($results)) {
-        // A cursor points to each row 
-        $cursor = $row; 
-        // fetch all existing usernames
-        $temp_username = $cursor['username'];           
-        // fetch all existing contact_num
-        $temp_contactNo = $cursor['contact_num'];       
- 
-        if (strcmp($temp_username, $username) == 0) {
-            Print '<script>alert("Username is already taken!");</script>';
-        }
-
-        else if (strcmp($temp_contactNo, $contactNo) == 0) {
-            Print '<script>alert("Contact Number is already taken!");</script>';
-        }
-
-        else {
-            // If all credentials are valid, therefore, create a Resident object
-            $resident = new Resident($username, $password, $full_name, $contactNo); 
-            // Create parameters for SQL 
-            $param_userName = $resident->getUserName();
-            $param_password = $resident->getPassword();
-            $param_full_name = $resident->getFullName();
-            $param_contactNum = $resident->getContactNum();
-
-            echo($param_userName);
-            echo($param_password);
-            echo($param_full_name);
-            echo($param_contactNum);
-
-            // Now, execute the sql insert statement
-            $sql = "INSERT INTO USERS (username, password, full_name, contact_num)
+        // INSERT THE NEWLY CREATED ACCOUNT INTO THE DATABASE
+        $sql = "INSERT INTO USERS (username, password, full_name, contact_num)
                 VALUES ('$param_userName', '$param_password', '$param_full_name', '$param_contactNum')";
-            mysqli_query($conn, $sql);
-            // Redirect back to login
-            header("location: resident_login_page.php");
-            exit();
-            break;          // break out of the while loop to stop making queries to the latest entry
-        }
-    }
 
-    // Close connection
-    $conn->close();
+        // Insert the newly created acount to the database
+        mysqli_query($conn, $sql);
+        // Redirect to Resident Login page
+        header("location: resident_login_page.php");
+        // Close connection 
+        $conn->close();
+    }
 }
 ?>

@@ -26,6 +26,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $input_report_title = trim($_POST["report-title"]); 
     if (empty($input_report_title)) {
         $report_title_err = "Please enter a title of your report!";
+    } 
+    elseif(!filter_var($input_report_title, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z\s]+$/")))){
+        $report_title_err = "Please enter a valid title of your report";
     }
 
     else {
@@ -45,6 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Validate report body
     $input_report_body = trim($_POST["report-body"]);
     if (empty($input_report_body)) {
+        // The report body may contain anything. As long as it is not empty
         $report_body_err = "Please write a discussion for your report!";
     }
 
@@ -53,9 +57,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Validate report contact (name of the person who reported it) 
-    $input_report_person = $_POST["report-contact-person"];
+    $input_report_person = trim($_POST["report-contact-person"]);
     if (empty($input_report_person)) {
         $report_name_err = "Please enter your full name!";
+    }
+    elseif(!filter_var($input_report_person, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z\s]+$/")))){
+        $report_name_err = "Please enter a valid name";
     }
 
     else {
@@ -67,7 +74,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($input_report_contactNum)) {
         $report_contact_err = "Please enter your contact number!"; 
     }
-    else if (ctype_digit($report_contact_err)) {
+    elseif (ctype_digit($report_contact_err)) {
+        $report_contact_err = "Please enter a valid contact number!"; 
+    }
+    elseif ($input_report_contactNum = 0 || $input_report_contactNum < 0) {
+        $report_contact_err = "Please enter a valid contact number!"; 
+    }
+    elseif ($input_report_contactNum >= 999999999) {
         $report_contact_err = "Please enter a valid contact number!"; 
     }
 
