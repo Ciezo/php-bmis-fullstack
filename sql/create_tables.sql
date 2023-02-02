@@ -31,6 +31,7 @@ CREATE TABLE IF NOT EXISTS NEWS (
 
 CREATE TABLE IF NOT EXISTS REPORTS (
     report_id       INT             NOT NULL auto_increment,
+    user_id         INT             NOT NULL,
     title           VARCHAR(255)    NOT NULL,
     report_category VARCHAR(100)    NOT NULL, 
     description     LONGTEXT        NOT NULL,
@@ -39,5 +40,6 @@ CREATE TABLE IF NOT EXISTS REPORTS (
     reported_by     VARCHAR(100)    NOT NULL,
     rep_byContact   VARCHAR(100)    NOT NULL,
 
-    PRIMARY KEY (report_id)
+    PRIMARY KEY (report_id),
+    FOREIGN KEY (user_id) REFERENCES USERS(user_id)
 );
