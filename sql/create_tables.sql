@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS REPORTS (
     date_posted     VARCHAR(100)    NOT NULL,
     status          VARCHAR(100)    NOT NULL,
     reported_by     VARCHAR(100)    NOT NULL,
-    rep_byContact   INT             NOT NULL,
+    rep_byContact   VARCHAR(100)    NOT NULL,
 
     PRIMARY KEY (report_id)
 );
