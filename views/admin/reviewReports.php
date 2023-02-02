@@ -59,7 +59,6 @@ require("../../database_instance.php");
             <a href="../../views/admin/admin_home.php">Create News</a>
             <a href="../../views/admin/view_newsFeed.php">News Feed</a>
             <a class="active" href="">Review Reports</a>
-            <a href="../../views/admin/barangayDetails.php">Barangay</a>
             <a href="../../components/custom/logout.php">Logout</a>
         </center>
     </div>

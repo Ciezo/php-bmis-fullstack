@@ -46,7 +46,6 @@ session_start();
                 <a href="admin_home.php">Create News</a>
                 <a class="active" href="">News Feed</a>
                 <a href="reviewReports.php">Review Reports</a>
-                <a href="barangayDetails.php">Barangay</a>
                 <a href="../../components/custom/logout.php">Logout</a>
             </center>
         </div>
