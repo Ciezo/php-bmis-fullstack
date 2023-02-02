@@ -35,6 +35,62 @@ require("../database_instance.php");
             .navbar .navbar-brand {
                 padding-left: 30px;
             }
+			 /* Margin between sections */
+			.section {
+				margin: 50px 0;
+			}
+			.welcome-prompt {
+				padding: 40px 0;
+			}
+			.logo {
+				margin-top: 40px;
+				width: 480px;
+				height: 480px;
+			}
+			.logo img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				border-radius: 50%;
+				border: 5px solid #333;
+			}
+			#mantra {
+				padding: 50px 0;
+				border-top: 2px solid #333;
+				border-bottom: 2px solid #333;
+				margin: 20px auto;
+			}
+			.content p {
+				font-size: 18px;
+				line-height: 1.5;
+				margin-top: 20px;
+			}
+			
+			#my-media {
+			  border-top: 5px solid #ddd;
+			  border-bottom: 5px solid #ddd;
+			  padding: 10px 0;
+			  margin-bottom: 20px;
+			}
+
+			#contact {
+			  border-top: 5px solid red;
+			  border-bottom: 5px solid red;
+			  padding: 10px 0;
+			  margin-top: 20px;
+			}
+			
+			a.facebook-button {
+			  display: inline-block;
+			  padding: 10px 20px;
+			  background-color: #4267B2;
+			  color: #fff;
+			  border-radius: 5px;
+			  text-decoration: none;
+			  margin: 10px;
+			}
+
+
         </style>
     </head>
     <body>
@@ -102,19 +158,24 @@ require("../database_instance.php");
                 </div>
             </section>
 
-            <section id="my-media" class="container bg-white text-center pt-4 pb-2 mx-auto">
+            <section id="my-media" class="container text-center pt-4 pb-2 mx-auto">
                 <h2 class="font-weight-bold display-5 mx-auto">Social Media</h2>
                 <div class="mx-auto">
+				<button class="facebook-button">
                     <a href="https://web.facebook.com/MarileNews" class="btn btn-block btn-social btn-facebook">
                         <span class="fa fa-facebook"></span>
                             MarileNews
                     </a>
                     <br>
+				</button>
+				<br>
+				<br>
+				<button class="facebook-button">
                     <a href="https://web.facebook.com/MarileNews" class="btn btn-block btn-social btn-facebook">
                         <span class="fa fa-facebook"></span>
                             (Buy & Sell) Heritage Homes, Loma De Gato, Perez, Sto. Niño, Bahay pare
                     </a>
-
+				</button>
                 </div>
             </section>
             
