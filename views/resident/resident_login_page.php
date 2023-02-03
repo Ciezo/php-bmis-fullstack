@@ -27,12 +27,12 @@ require("../../database_instance.php");
     
 	<style>
   .resident-login-form {
-    width: 30%;
-    padding: 30px;
+    margin: 100px auto;
+    padding: 50px;
+    width: 400px;
     background-color: #f2f2f2;
     border-radius: 10px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    margin-top: 50px;
   }
 
   .input-fields {
