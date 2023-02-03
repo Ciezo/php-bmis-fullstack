@@ -13,6 +13,16 @@
 // Require the instance of database configuration
 session_start();
 require("../../database_instance.php");
+
+if (!isset($_SESSION["resident-username"])) {
+    header("location: resident_login_page.php");    
+} if (!isset($_COOKIE["resident_cookie_username"])) {
+	header("location: resident_login_page.php");   
+}
+else {
+	header("location: ../error/error.php");      
+}
+
 ?>
 
 

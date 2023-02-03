@@ -13,6 +13,15 @@
 session_start();
 require("../../database_instance.php");
 
+if (!isset($_SESSION["resident-username"])) {
+    header("location: resident_login_page.php");    
+} if (!isset($_COOKIE["resident_cookie_username"])) {
+	header("location: resident_login_page.php");   
+}
+else {
+	header("location: ../error/error.php");    
+}
+
 // Form values 
 $report_title = $report_category = $report_body = $report_contact = $report_name = "";
 $report_title_err = $report_category_err = $report_body_err = $report_contact_err = $report_name_err = "";
