@@ -13,13 +13,6 @@
 session_start();
 require("../../database_instance.php");
 
-// Check the cookies for resident
-if(!isset($_COOKIE["resident_cookie_username"])) {
-    if(!isset($_COOKIE["resident_cookie_password"])) {
-        header("location ../error/error.php");
-    }
-}
-
 // Form values 
 $report_title = $report_category = $report_body = $report_contact = $report_name = "";
 $report_title_err = $report_category_err = $report_body_err = $report_contact_err = $report_name_err = "";

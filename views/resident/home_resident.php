@@ -13,13 +13,6 @@
 // Require the instance of database configuration
 session_start();
 require("../../database_instance.php");
-
-// Check the cookies for resident
-if(!isset($_COOKIE["resident_cookie_username"])) {
-    if(!isset($_COOKIE["resident_cookie_password"])) {
-        header("location ../error/error.php");
-    }
-}
 ?>
 
 
