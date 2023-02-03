@@ -27,10 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($input_report_title)) {
         $report_title_err = "Please enter a title of your report!";
     } 
-    elseif(!filter_var($input_report_title, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z\s]+$/")))){
-        $report_title_err = "Please enter a valid title of your report";
-    }
-
+    
     else {
         $report_title =  $input_report_title;
     }
@@ -135,6 +132,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <form action="complaints_page.php" method="POST">
                 <label>Report Title</label>
                 <input type="text" name="report-title" placeholder="Write a title for brief context" class="form-control <?php echo (!empty($report_title_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $report_title ; ?>">
+                <span class="invalid-feedback"><?php echo $report_title_err ;?></span>
                 <br>
                 <label>Choose a report category</label>
                 <select class="form-control" name="report-category" id="" required="">
