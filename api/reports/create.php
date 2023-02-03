@@ -15,7 +15,7 @@ if ($_SESSION["submit_report"] == "submit_report") {
      */
 
     // Fetch all the SESSION VARIABLES ASSIGNED FROM THE FORM
-
+    $report_user_id = $_SESSION["user_report_id"];
     $report_title = $_SESSION["report_title"]; 
     $report_category = $_SESSION["report_category"];
     $report_body = $_SESSION["report_body"];
@@ -29,9 +29,10 @@ if ($_SESSION["submit_report"] == "submit_report") {
     $report_status = "In Progress";
 
     // Create a query to save a report
-    $sql = "INSERT INTO REPORTS (title, report_category, description, date_posted, status, reported_by, rep_byContact) 
+    $sql = "INSERT INTO REPORTS (user_id, title, report_category, description, date_posted, status, reported_by, rep_byContact) 
             VALUES 
                 (
+                    '$report_user_id',
                     '$report_title', 
                     '$report_category',
                     '$report_body',

@@ -16,7 +16,15 @@ require("../../database_instance.php");
 // Form values 
 $report_title = $report_category = $report_body = $report_contact = $report_name = "";
 $report_title_err = $report_category_err = $report_body_err = $report_contact_err = $report_name_err = "";
+$id = "";
 
+ // Fetch the user_id 
+ $username_in_session =  $_SESSION["resident-username"];
+ $sql = "SELECT * FROM USERS WHERE username='$username_in_session'";
+ $results = mysqli_query($conn, $sql);
+ while($rows = mysqli_fetch_array($results)) {
+     $id = $rows["user_id"];
+ }
 /**
  * Input validation
  */
@@ -71,16 +79,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($input_report_contactNum)) {
         $report_contact_err = "Please enter your contact number!"; 
     }
-    elseif (ctype_digit($report_contact_err)) {
-        $report_contact_err = "Please enter a valid contact number!"; 
+    elseif ($input_report_contactNum == 0 || $input_report_contactNum < 0) {
+        $report_contact_err = "Please enter a valid number!"; 
     }
-    elseif ($input_report_contactNum = 0 || $input_report_contactNum < 0) {
-        $report_contact_err = "Please enter a valid contact number!"; 
-    }
-    elseif ($input_report_contactNum >= 999999999) {
-        $report_contact_err = "Please enter a valid contact number!"; 
-    }
-
+    
     else {
         $report_contact = $input_report_contactNum;
     }
@@ -173,6 +175,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 empty($report_contact_err) && empty($report_name_err)) {
                                     
                                     // Set session variables
+                                    $_SESSION["user_report_id"] = $id;
                                     $_SESSION["submit_report"] = "submit_report";
                                     $_SESSION["report_title"] = $report_title; 
                                     $_SESSION["report_category"] = $report_category; 
@@ -194,7 +197,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <!-- Create a table to fetch REPORTS table -->
             <?php
                 // Create a query to fetch all contents from report tables
-                $query = "SELECT * FROM REPORTS"; 
+                $query = "SELECT * FROM REPORTS WHERE user_id = $id"; 
                 $results = mysqli_query($conn, $query);
 
                 if ($results->num_rows > 0) {
