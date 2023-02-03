@@ -8,8 +8,8 @@
 /**
  * @note PLEASE CHECK THE CONSOLE BROWSER TO SEE IF CONNECTION TO HEROKU IS SUCCESSFUL!
  */
-require("../../database_instance.php");
 session_start();
+require("../../database_instance.php");
 ?>
 
 <!DOCTYPE html>
@@ -91,13 +91,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = ($_POST["username"]);
     $password = ($_POST["password"]);
 
+    // SESSION VARIABLES 
+    $_SESSION["admin-username"] = $username; 
+    $_SESSION["admin-password"] = $password; 
+
     // Create a query to select a single entry from the USERS table
     $query = "SELECT * FROM ADMIN WHERE username='$username' AND password='$password'"; 
     $results = mysqli_query($conn, $query);
     $row = mysqli_fetch_array($results);
    
     if (($row['username'] == $username) && $row['password'] == $password) {
-        header("location: admin_home.php");
+        header("location: ../sessions/admin_session_check.php");
     }
 
     else {

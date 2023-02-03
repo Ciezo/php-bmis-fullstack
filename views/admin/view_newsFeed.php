@@ -4,14 +4,21 @@
  * @note PLEASE CHECK THE CONSOLE BROWSER TO SEE IF CONNECTION TO HEROKU IS SUCCESSFUL!
  */
 // Require the instance of database configuration
-require("../../database_instance.php");
 session_start();
+require("../../database_instance.php");
+
+// Check the cookies for admin
+if(!isset($_COOKIE["admin_cookie_username"])) {
+    if(!isset($_COOKIE["admin_cookie_password"])) {
+        header("location ../error/error.php");
+    }
+}
 ?>
 
 
 <!DOCTYPE html>
 <html lang="en">
-    <head>
+    <head> 
         <title>News Feed and Activities</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">

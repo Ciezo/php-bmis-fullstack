@@ -7,9 +7,12 @@
 session_start();
 require("../../database_instance.php");
 
-/**
- * @todo Retrieve all Resident Reports from the database
- */
+// Check the cookies for admin
+if(!isset($_COOKIE["admin_cookie_username"])) {
+    if(!isset($_COOKIE["admin_cookie_password"])) {
+        header("location ../error/error.php");
+    }
+}
 ?>
 
 <!DOCTYPE html>
