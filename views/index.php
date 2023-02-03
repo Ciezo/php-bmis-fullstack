@@ -171,9 +171,9 @@ require("../database_instance.php");
 				<br>
 				<br>
 				<button class="facebook-button">
-                    <a href="https://web.facebook.com/MarileNews" class="btn btn-block btn-social btn-facebook">
+                    <a href="https://www.facebook.com/groups/155883489776551" class="btn btn-block btn-social btn-facebook">
                         <span class="fa fa-facebook"></span>
-                            (Buy & Sell) Heritage Homes, Loma De Gato, Perez, Sto. Niño, Bahay pare
+                            (Buy & Sell FB Group Page) Heritage Homes, Loma De Gato, Perez, Sto. Niño, Bahay Pare
                     </a>
 				</button>
                 </div>
