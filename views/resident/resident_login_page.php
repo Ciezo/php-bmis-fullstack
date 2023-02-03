@@ -101,16 +101,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = ($_POST["username"]);
     $password = ($_POST["password"]);
 
-    // SESSION VARIABLES 
-    $_SESSION["resident-username"] = $username; 
-    $_SESSION["resident-password"] = $password; 
-
     // Create a query to select a single entry from the USERS table
     $query = "SELECT * FROM USERS WHERE username='$username' AND password='$password'"; 
     $results = mysqli_query($conn, $query);
     $row = mysqli_fetch_array($results);
    
     if (($row['username'] == $username) && $row['password'] == $password) {
+        // SESSION VARIABLES 
+        $_SESSION["resident-username"] = $username; 
+        $_SESSION["resident-password"] = $password; 
         header("location: ../sessions/resident_session_check.php");
     }
 
