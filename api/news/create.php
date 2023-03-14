@@ -1,5 +1,10 @@
 <?php
 require("../../database_instance.php");
+// Check if admin is logged in.
+if (!isset($_SESSION["admin-username"])) {
+    // If not logged in, then redirect to log-in page.
+    header("location: ../views/error/error.php");
+}
 
 // Try to retrieve the form values
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

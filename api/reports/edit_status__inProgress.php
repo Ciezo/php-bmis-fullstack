@@ -6,6 +6,11 @@
 // Require the instance of database configuration
 session_start();
 require("../../database_instance.php");
+// Check if admin is logged in.
+if (!isset($_SESSION["admin-username"])) {
+    // If not logged in, then redirect to log-in page.
+    header("location: ../views/error/error.php");
+}
 
 // Begin fetching the id of a record 
 if(isset($_POST["id"]) && !empty($_POST["id"])){
